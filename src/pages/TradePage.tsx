@@ -35,7 +35,6 @@ const Wrapper = styled.div`
   padding: 16px 16px;
   .borderNone .ant-select-selector {
     border: none !important;
-    borderL 1px;
   }
 `;
 
