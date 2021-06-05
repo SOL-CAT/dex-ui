@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Button, Col, Popover, Row, Select, Typography } from 'antd';
+import { Button, Col, Popover, Row, Select, Typography, Image } from 'antd';
 import styled from 'styled-components';
 import Orderbook from '../components/Orderbook';
 import UserInfoTable from '../components/UserInfoTable';
@@ -25,7 +25,8 @@ import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
 import { useHistory, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-
+import logoAndRisk from './marketLogoAndRisk.json';
+import eth from '../assets/eth.png';
 const { Option, OptGroup } = Select;
 
 const Wrapper = styled.div`
@@ -176,13 +177,13 @@ function TradePageInner() {
                 title="Market address"
                 trigger="click"
               >
-                <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                <InfoCircleOutlined style={{ color: '#ffa910' }} />
               </Popover>
             </Col>
           ) : null}
           <Col>
             <PlusCircleOutlined
-              style={{ color: '#2abdd2' }}
+              style={{ color: '#ffa910' }}
               onClick={() => setAddMarketVisible(true)}
             />
           </Col>
@@ -305,7 +306,12 @@ function MarketSelector({
                 backgroundColor: i % 2 === 0 ? 'rgb(39, 44, 61)' : null,
               }}
             >
-              {name} {deprecated ? ' (Deprecated)' : null}
+              
+              <Image height="25px" width="25px" src = {eth}/>
+              
+              
+              {name} {deprecated ? ' (Deprecated)' : null} 
+              {logoAndRisk[i%3].risk==="High Risk" ? <span style={{color:"red", marginLeft: "15px", fontSize: "10px"}}>{logoAndRisk[i%3].risk}</span> : <span style={{color:"green", marginLeft: "15px", fontSize: "10px"}}>{logoAndRisk[i%3].risk}</span>} 
             </Option>
           ))}
       </OptGroup>

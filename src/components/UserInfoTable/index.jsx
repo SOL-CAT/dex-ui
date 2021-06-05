@@ -25,7 +25,7 @@ export default function Index() {
         </Paragraph>
       </Typography>
       <Tabs defaultActiveKey="orders">
-        <TabPane tab="Open Orders" key="orders">
+        <TabPane tab="Open Orders" style={{ color: '#FFA910' }} key="orders">
           <OpenOrdersTab />
         </TabPane>
         <TabPane tab="Recent Trade History" key="fills">

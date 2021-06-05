@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 html,body{
   background: #11161D;
+  -antd-wave-shadow-color: #FFA910;
 }
 input[type=number]::-webkit-inner-spin-button {
   opacity: 0;
@@ -28,19 +29,19 @@ input[type=number]:focus::-webkit-inner-spin-button {
   background: #5b5f67;
 }
 .ant-slider-track, .ant-slider:hover .ant-slider-track {
-  background-color: #2abdd2;
+  background-color: #ffa910;
   opacity: 0.75;
 }
 .ant-slider-track,
 .ant-slider ant-slider-track:hover {
-  background-color: #2abdd2;
+  background-color: #ffa910;
   opacity: 0.75;
 }
 .ant-slider-dot-active,
 .ant-slider-handle,
 .ant-slider-handle-click-focused,
 .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open)  {
-  border: 2px solid #2abdd2; 
+  border: 2px solid #ffa910; 
 }
 .ant-table-tbody > tr.ant-table-row:hover > td {
   background: #273043;
@@ -73,19 +74,28 @@ input[type=number]:focus::-webkit-inner-spin-button {
 }
 
 @-webkit-keyframes highlight {
-  from { background-color: #2abdd2;}
+  from { background-color: #ffa910;}
   to {background-color: #1A2029;}
 }
 @-moz-keyframes highlight {
-  from { background-color: #2abdd2;}
+  from { background-color: #ffa910;}
   to {background-color: #1A2029;}
 }
 @-keyframes highlight {
-  from { background-color: #2abdd2;}
+  from { background-color: #ffa910;}
   to {background-color: #1A2029;}
 }
 .flash {
   -moz-animation: highlight 0.5s ease 0s 1 alternate ;
   -webkit-animation: highlight 0.5s ease 0s 1 alternate;
   animation: highlight 0.5s ease 0s 1 alternate;
+}
+.ant-tabs-tab-btn{
+  color: #FFA910;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+  color: #FFA910;
+}
+.ant-menu-item{
+  color: #FFA910;
 }`;

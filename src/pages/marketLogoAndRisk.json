@@ -1,0 +1,17 @@
+[
+    {
+        "name": "ALEPH/WUSDC",
+        "risk": "Low Risk",
+        "logo": "ltc.svg"
+    },
+    {
+        "name": "BTC/WUSDC",
+        "risk": "High Risk",
+        "logo": "btc.svg"
+    },
+    {
+        "name": "ETH/WUSDC",
+        "risk": "High Risk",
+        "logo": "eth.svg"
+    }
+]
