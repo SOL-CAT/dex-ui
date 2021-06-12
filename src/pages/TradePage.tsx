@@ -25,6 +25,7 @@ import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
 import { useHistory, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
+import {TVChartContainer} from '../components/TradingView';
 
 const { Option, OptGroup } = Select;
 
@@ -328,34 +329,46 @@ const DeprecatedMarketsPage = ({ switchToLiveMarkets }) => {
 };
 
 const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
+  let radius = {borderRadius: "15px"};
   return (
+    <Wrapper>
     <Row
       style={{
-        minHeight: '900px',
+        height: '1200px',
         flexWrap: 'nowrap',
       }}
     >
-      <Col flex="auto" style={{ height: '100%', display: 'flex' }}>
-        <UserInfoTable />
-      </Col>
-      <Col flex={'360px'} style={{ height: '100%' }}>
-        <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
-        <TradesTable smallScreen={false} />
+      <Col flex="auto" style={{ display: 'flex', flexDirection: 'column' }}>
+       
+      <Row style = {{minHeight: '690px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
+      <Row style = {{minHeight: '250px', flexWrap: 'nowrap'}}><UserInfoTable /></Row>
       </Col>
       <Col
         flex="400px"
         style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
       >
-        <TradeForm setChangeOrderRef={onChangeOrderRef} />
-        <StandaloneBalancesDisplay />
+        <TradeForm style = {radius} setChangeOrderRef={onChangeOrderRef} />
+        <Orderbook smallScreen={false} onPrice={onPrice} onSize={onSize} />
+        
+        <TradesTable smallScreen={false} />
+       
+      </Col>
+      
+      <Col>
+      
       </Col>
     </Row>
+    
+      <Row><StandaloneBalancesDisplay /></Row>
+
+      </Wrapper>
   );
 };
 
 const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
+     <Row style = {{height: '300px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
       <Row
         style={{
           height: '900px',
@@ -392,6 +405,8 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
 const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
   return (
     <>
+    <Row style = {{height: '500px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
+
       <Row>
         <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <TradeForm style={{ flex: 1 }} setChangeOrderRef={onChangeOrderRef} />

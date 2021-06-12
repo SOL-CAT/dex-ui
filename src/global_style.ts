@@ -46,7 +46,7 @@ input[type=number]:focus::-webkit-inner-spin-button {
   background: #273043;
 }
 .ant-table-tbody > tr > td {
-  border-bottom: 8px solid #1A2029;
+  border-bottom: 8px solid gray;
 }
 .ant-table-container table > thead > tr:first-child th {
   border-bottom: none;
@@ -61,7 +61,7 @@ input[type=number]:focus::-webkit-inner-spin-button {
     background: #212734;
   }
   .ant-table-thead > tr > th {
-    background: #1A2029;
+    background: gray;
   }
 .ant-select-item-option-content {
   img {
@@ -74,15 +74,15 @@ input[type=number]:focus::-webkit-inner-spin-button {
 
 @-webkit-keyframes highlight {
   from { background-color: #2abdd2;}
-  to {background-color: #1A2029;}
+  to {background-color: gray;}
 }
 @-moz-keyframes highlight {
   from { background-color: #2abdd2;}
-  to {background-color: #1A2029;}
+  to {background-color: gray;}
 }
 @-keyframes highlight {
   from { background-color: #2abdd2;}
-  to {background-color: #1A2029;}
+  to {background-color: gray;}
 }
 .flash {
   -moz-animation: highlight 0.5s ease 0s 1 alternate ;

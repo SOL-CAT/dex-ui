@@ -176,7 +176,7 @@ export default function StandaloneBalancesDisplay() {
   ];
 
   return (
-    <FloatingElement style={{ flex: 1, paddingTop: 10 }}>
+    <FloatingElement style={{ flex: 1, paddingTop: 10, borderRadius:"15px" }}>
       {formattedBalances.map(
         ([currency, balances, baseOrQuote, mint], index) => (
           <React.Fragment key={index}>

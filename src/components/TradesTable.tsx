@@ -22,11 +22,11 @@ export default function PublicTrades({ smallScreen }) {
     <FloatingElement
       style={
         smallScreen
-          ? { flex: 1 }
+          ? { flex: 1, borderRadius:"15px" }
           : {
               marginTop: '10px',
               minHeight: '270px',
-              maxHeight: 'calc(100vh - 700px)',
+              maxHeight: 'calc(100vh - 700px)', borderRadius:"15px"
             }
       }
     >

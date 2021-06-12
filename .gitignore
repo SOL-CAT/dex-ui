@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/public/charting_library
+/public/datafeeds
+/src/charting_library
 # testing
 /coverage
 

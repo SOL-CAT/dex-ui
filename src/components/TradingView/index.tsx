@@ -7,7 +7,6 @@ import {
   ResolutionString,
 } from '../../charting_library'; // Make sure to follow step 1 of the README
 import { useMarket } from '../../utils/markets';
-import { BONFIDA_DATA_FEED } from '../../utils/bonfidaConnector';
 import { findTVMarketFromAddress } from '../../utils/tradingview';
 
 // This is a basic example of how to create a TV widget
@@ -38,21 +37,23 @@ export const TVChartContainer = () => {
     interval: '60' as ResolutionString,
     theme: 'Dark',
     containerId: 'tv_chart_container',
-    datafeedUrl: BONFIDA_DATA_FEED,
+    datafeedUrl: 'https://dry-ravine-67635.herokuapp.com/tv',
     libraryPath: '/charting_library/',
     fullscreen: false,
     autosize: true,
-    studiesOverrides: {},
+   // studiesOverrides: {},
   };
 
   const tvWidgetRef = React.useRef<IChartingLibraryWidget | null>(null);
   const { market } = useMarket();
 
   React.useEffect(() => {
+    console.log(market);
     const widgetOptions: ChartingLibraryWidgetOptions = {
+      
       symbol: findTVMarketFromAddress(
         market?.address.toBase58() || '',
-      ) as string,
+      ) as ChartingLibraryWidgetOptions['symbol'],
       // BEWARE: no trailing slash is expected in feed URL
       // tslint:disable-next-line:no-any
       datafeed: new (window as any).Datafeeds.UDFCompatibleDatafeed(
@@ -90,10 +91,9 @@ export const TVChartContainer = () => {
             },
           }),
         );
-        button.innerHTML = 'Check API';
       });
     });
   }, [market]);
 
-  return <div id={defaultProps.containerId} className="tradingview-chart" />;
+  return <div style={{height: '100%', width: '100%', borderRadius:"15px"}} id={defaultProps.containerId} className="tradingview-chart" />;
 };

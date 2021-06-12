@@ -125,20 +125,20 @@ export async function settleFunds({
     const usdt = TOKEN_MINTS.find(({ name }) => name === 'USDT');
     const usdc = TOKEN_MINTS.find(({ name }) => name === 'USDC');
     if (
-      process.env.REACT_APP_USDT_REFERRAL_FEES_ADDRESS &&
+      "BcdwKoLVcCgheESzdgzh4puJDPVaueTn6bHLnemFZ1ZP" &&
       usdt &&
       market.quoteMintAddress.equals(usdt.address)
     ) {
       referrerQuoteWallet = new PublicKey(
-        process.env.REACT_APP_USDT_REFERRAL_FEES_ADDRESS,
+        "BcdwKoLVcCgheESzdgzh4puJDPVaueTn6bHLnemFZ1ZP",
       );
     } else if (
-      process.env.REACT_APP_USDC_REFERRAL_FEES_ADDRESS &&
+      "GiZfn7fRZKdhfbpmX1evzirLQjq4BMhzRB6PU9KEkuhy" &&
       usdc &&
       market.quoteMintAddress.equals(usdc.address)
     ) {
       referrerQuoteWallet = new PublicKey(
-        process.env.REACT_APP_USDC_REFERRAL_FEES_ADDRESS,
+        "GiZfn7fRZKdhfbpmX1evzirLQjq4BMhzRB6PU9KEkuhy",
       );
     }
   }
