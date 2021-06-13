@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Button, Col, Popover, Row, Select, Typography } from 'antd';
+import { Button, Card, Col, Image, Popover, Row, Select, Typography } from 'antd';
 import styled from 'styled-components';
 import Orderbook from '../components/Orderbook';
 import UserInfoTable from '../components/UserInfoTable';
@@ -26,7 +26,16 @@ import { notify } from '../utils/notifications';
 import { useHistory, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import {TVChartContainer} from '../components/TradingView';
+import marketDataInfo from '../data.json';
+import ETH from '../assets/ETH.png';
+import BTC from '../assets/BTC.png';
+import CATO from '../assets/CATO.jpg';
 
+const mockdict = {
+  ETH: ETH,
+  BTC: BTC,
+  CATO: CATO
+};
 const { Option, OptGroup } = Select;
 
 const Wrapper = styled.div`
@@ -79,7 +88,7 @@ function TradePageInner() {
   });
 
   useEffect(() => {
-    document.title = marketName ? `${marketName} — Serum` : 'Serum';
+    document.title = marketName ? `${marketName} — CATO Dex` : 'CATO Dex';
   }, [marketName]);
 
   const changeOrderRef = useRef<
@@ -118,11 +127,11 @@ function TradePageInner() {
         />
       );
     } else if (width < 1000) {
-      return <RenderSmaller {...componentProps} />;
+      return <RenderSmaller {...componentProps} marketN={marketName}/>;
     } else if (width < 1450) {
-      return <RenderSmall {...componentProps} />;
+      return <RenderSmall {...componentProps} marketN={marketName} />;
     } else {
-      return <RenderNormal {...componentProps} />;
+      return <RenderNormal {...componentProps} marketN={marketName} />;
     }
   })();
 
@@ -328,20 +337,22 @@ const DeprecatedMarketsPage = ({ switchToLiveMarkets }) => {
   );
 };
 
-const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
+const RenderNormal = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   let radius = {borderRadius: "15px"};
   return (
     <Wrapper>
+        <Banner marketName={marketN}></Banner>
     <Row
       style={{
-        height: '1200px',
+        height: '1100px',
         flexWrap: 'nowrap',
       }}
     >
       <Col flex="auto" style={{ display: 'flex', flexDirection: 'column' }}>
        
-      <Row style = {{minHeight: '690px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
-      <Row style = {{minHeight: '250px', flexWrap: 'nowrap'}}><UserInfoTable /></Row>
+      <Row style = {{minHeight: '600px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
+      <Row><StandaloneBalancesDisplay /></Row>
+
       </Col>
       <Col
         flex="400px"
@@ -358,14 +369,13 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize }) => {
       
       </Col>
     </Row>
-    
-      <Row><StandaloneBalancesDisplay /></Row>
-
+    <Row style = {{marginTop:"50px", minHeight: '250px', flexWrap: 'nowrap'}}><UserInfoTable /></Row>
+      
       </Wrapper>
   );
 };
 
-const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
+const RenderSmall = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   return (
     <>
      <Row style = {{height: '300px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
@@ -402,7 +412,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize }) => {
   );
 };
 
-const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
+const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   return (
     <>
     <Row style = {{height: '500px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
@@ -434,4 +444,44 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize }) => {
       </Row>
     </>
   );
+};
+
+const Banner = ({marketName}) =>{
+  let supply="", typeOfToken="", website="";
+  for (var i=0; i<marketDataInfo.length; i++){
+    if (marketDataInfo[i].name===marketName){
+      supply = marketDataInfo[i].supply;
+      typeOfToken = marketDataInfo[i].type;
+      website = marketDataInfo[i].website;
+      break;
+    }
+
+  }
+  let logoUrl = marketName ? marketName.split('/')[0] : null;
+  let type = "High Risk";
+  let riskStyle ={color: "white", verticalAlign: "top", marginLeft: "20px", fontSize: "22px"};
+  let titleSpan = <span style={{verticalAlign:"middle"}}><Image style={{top:"10px"}} height='75px' width='75px' src={mockdict[logoUrl]}/><span style={riskStyle}>{marketName}<span style = {{fontSize:"12px", marginLeft:"10px"}}>{typeOfToken}</span></span></span>
+  return(
+    <Row style={{height: '220px', flexWrap: 'nowrap', marginBottom: "50px"}}>
+        <Card bordered={false} style = {{height: '100%', width: '100%', background: "#313131", borderRadius:"15px  "}} title = {titleSpan }>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Supply
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {supply}
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Website
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            <a href = {website}>{website}</a>
+            </Col>
+          </Row>
+          
+        </Card>
+        
+    </Row>)
 };

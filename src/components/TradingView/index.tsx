@@ -35,7 +35,7 @@ export const TVChartContainer = () => {
   const defaultProps: ChartContainerProps = {
     symbol: 'BTC/USDC',
     interval: '60' as ResolutionString,
-    theme: 'Dark',
+    theme: 'Light',
     containerId: 'tv_chart_container',
     datafeedUrl: 'https://dry-ravine-67635.herokuapp.com/tv',
     libraryPath: '/charting_library/',
@@ -71,7 +71,7 @@ export const TVChartContainer = () => {
       fullscreen: defaultProps.fullscreen,
       autosize: defaultProps.autosize,
       studies_overrides: defaultProps.studiesOverrides,
-      theme: 'Dark',
+      theme: 'Light',
     };
 
     const tvWidget = new widget(widgetOptions);

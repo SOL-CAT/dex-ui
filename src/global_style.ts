@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 html,body{
-  background: #11161D;
+  background: #282828;
 }
 input[type=number]::-webkit-inner-spin-button {
   opacity: 0;
@@ -46,7 +46,7 @@ input[type=number]:focus::-webkit-inner-spin-button {
   background: #273043;
 }
 .ant-table-tbody > tr > td {
-  border-bottom: 8px solid gray;
+  border-bottom: 8px solid #313131;
 }
 .ant-table-container table > thead > tr:first-child th {
   border-bottom: none;
@@ -55,13 +55,13 @@ input[type=number]:focus::-webkit-inner-spin-button {
   border-top: 1px solid #434a59 !important;
 }
 .ant-layout {
-    background: #11161D
+    background: #282828
   }
   .ant-table {
     background: #212734;
   }
   .ant-table-thead > tr > th {
-    background: gray;
+    background: #313131;
   }
 .ant-select-item-option-content {
   img {
@@ -74,18 +74,23 @@ input[type=number]:focus::-webkit-inner-spin-button {
 
 @-webkit-keyframes highlight {
   from { background-color: #2abdd2;}
-  to {background-color: gray;}
+  to {background-color: #313131;}
 }
 @-moz-keyframes highlight {
   from { background-color: #2abdd2;}
-  to {background-color: gray;}
+  to {background-color: #313131;}
 }
 @-keyframes highlight {
   from { background-color: #2abdd2;}
-  to {background-color: gray;}
+  to {background-color: #313131;}
 }
 .flash {
   -moz-animation: highlight 0.5s ease 0s 1 alternate ;
   -webkit-animation: highlight 0.5s ease 0s 1 alternate;
   animation: highlight 0.5s ease 0s 1 alternate;
-}`;
+}
+.ant-card-grid{
+webkit-box-shadow :0px;
+box-shadow: 0px;
+}
+`;
