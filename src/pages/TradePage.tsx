@@ -474,6 +474,7 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
 const RenderSmall = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   return (
     <>
+    <Banner marketName={marketN}></Banner>
      <Row style = {{height: '300px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
       <Row
         style={{
@@ -511,6 +512,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
 const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   return (
     <>
+    <Banner marketName={marketN}></Banner>
     <Row style = {{height: '500px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
 
       <Row>
