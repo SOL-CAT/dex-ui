@@ -28,22 +28,22 @@ input[type=number]:focus::-webkit-inner-spin-button {
   background: #5b5f67;
 }
 .ant-slider-track, .ant-slider:hover .ant-slider-track {
-  background-color: #2abdd2;
+  background-color: #FFA910;
   opacity: 0.75;
 }
 .ant-slider-track,
 .ant-slider ant-slider-track:hover {
-  background-color: #2abdd2;
+  background-color: #FFA910;
   opacity: 0.75;
 }
 .ant-slider-dot-active,
 .ant-slider-handle,
 .ant-slider-handle-click-focused,
 .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open)  {
-  border: 2px solid #2abdd2; 
+  border: 2px solid #FFA910; 
 }
 .ant-table-tbody > tr.ant-table-row:hover > td {
-  background: #273043;
+  background: #282828;
 }
 .ant-table-tbody > tr > td {
   border-bottom: 8px solid #313131;
@@ -52,13 +52,13 @@ input[type=number]:focus::-webkit-inner-spin-button {
   border-bottom: none;
 }
 .ant-divider-horizontal.ant-divider-with-text::before, .ant-divider-horizontal.ant-divider-with-text::after {
-  border-top: 1px solid #434a59 !important;
+  border-top: 1px solid #FFFFFF !important;
 }
 .ant-layout {
     background: #282828
   }
   .ant-table {
-    background: #212734;
+    background: #282828;
   }
   .ant-table-thead > tr > th {
     background: #313131;
@@ -69,19 +69,19 @@ input[type=number]:focus::-webkit-inner-spin-button {
   }
 }
 .ant-modal-content {
-  background-color: #212734;
+  background-color: #282828;
 }
 
 @-webkit-keyframes highlight {
-  from { background-color: #2abdd2;}
+  from { background-color: #FFA910;}
   to {background-color: #313131;}
 }
 @-moz-keyframes highlight {
-  from { background-color: #2abdd2;}
+  from { background-color: #FFA910;}
   to {background-color: #313131;}
 }
 @-keyframes highlight {
-  from { background-color: #2abdd2;}
+  from { background-color: #FFA910;}
   to {background-color: #313131;}
 }
 .flash {

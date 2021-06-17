@@ -20,6 +20,7 @@ import {
   DeleteOutlined,
   InfoCircleOutlined,
   PlusCircleOutlined,
+  ScanOutlined,
 } from '@ant-design/icons';
 import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
@@ -30,17 +31,112 @@ import marketDataInfo from '../data.json';
 import ETH from '../assets/ETH.png';
 import BTC from '../assets/BTC.png';
 import CATO from '../assets/CATO.jpg';
+import BOP from '../assets/BOP.png';
+import CHEEMS from '../assets/CHEEMS.png';
+import COPE from '../assets/COPE.jpg';
+import CREAM from '../assets/CREAM.png';
+import DOGA from '../assets/DOGA.png';
+import FAB from '../assets/FAB.png';
+import FIDA from '../assets/FIDA.svg';
+import FROG from '../assets/FROG.jpeg';
+import FRONT from '../assets/FRONT.png';
+import FTR from '../assets/FTR.png';
+import FTT from '../assets/FTT.png';
+import HGET from '../assets/HGET.svg';
+import HNT from '../assets/HNT.webp';
+import HOLD from '../assets/HOLD.png';
+import HXRO from '../assets/HXRO.webp';
+import JOKE from '../assets/JOKE.png';
+import KEEP from '../assets/KEEP.webp';
+import KEKW from '../assets/KEKW.png';
+import KIN from '../assets/KIN.png';
+import LINK from '../assets/LINK.png';
+import LUA from '../assets/LUA.png';
+import MAPS from '../assets/MAPS.svg';
+import MEDIA from '../assets/MEDIA.png';
+import MER from '../assets/MER.svg';
+import MOLA from '../assets/MOLA.jpg';
+import MSRM from '../assets/MSRM.png';
+import NINJA from '../assets/NINJA.svg';
+import OXY from '../assets/OXY.svg';
+import PGN from '../assets/PGN.png';
+import POTATO from '../assets/POTATO.jpg';
+import RAY from '../assets/RAY.png';
+import ROPE from '../assets/ROPE.svg';
+import SAIL from '../assets/SAIL.png';
+import SAMO from '../assets/SAMO.png';
+import SDOGE from '../assets/SDOGE.jpg';
+import SLDN from '../assets/SLNDN.png';
+import SOLAPE from '../assets/SOLAPE.png';
+import SRM from '../assets/MSRM.png';
+import SOL from '../assets/SOL.png';
+import STNK from '../assets/STNK.png';
+import SUSHI from '../assets/SUSHI.png';
+import TULIP from '../assets/TULIP.svg';
+import USDC from '../assets/USDC.png';
+import WOOF from '../assets/WOOF.png';
+import mBRZ from '../assets/mBRZ.png';
+import MEOW from '../assets/sCAT.jpg';
+import xCOPE from '../assets/COPE.jpg';
+import PARTI from '../assets/PARTI.png';
 
 const mockdict = {
   ETH: ETH,
   BTC: BTC,
-  CATO: CATO
+  CATO: CATO,
+  BOP: BOP,
+  CHEEMS: CHEEMS,
+  COPE: COPE,
+  CREAM: CREAM,
+  DOGA: DOGA,
+  FAB: FAB,
+  FIDA: FIDA,
+  FROG: FROG,
+  FRONT: FRONT,
+  FTR: FTR,
+  FTT: FTT,
+  HGET: HGET,
+  HNT: HNT,
+  HOLD: HOLD,
+  HXRO: HXRO,
+  JOKE: JOKE,
+  KEEP: KEEP,
+  KEKW: KEKW,
+  KIN: KIN,
+  LINK: LINK,
+  LUA: LUA,
+  MAPS: MAPS,
+  MEDIA: MEDIA,
+  MER: MER,
+  MOLA: MOLA,
+  MSRM: MSRM,
+  NINJA: NINJA,
+  OXY: OXY,
+  PGN: PGN,
+  POTATO: POTATO,
+  RAY: RAY,
+  ROPE: ROPE,
+  SAIL: SAIL,
+  SAMO: SAMO,
+  SDOGE: SDOGE,
+  SLNDN: SLDN,
+  SOLAPE: SOLAPE,
+  SRM: SRM,
+  SOL: SOL,
+  STNK: STNK,
+  SUSHI: SUSHI,
+  TULIP: TULIP,
+  USDC: USDC,
+  WOOF: WOOF,
+  mBRZ: mBRZ,
+  MEOW: MEOW,
+  xCOPE: xCOPE,
+  PARTI: PARTI,
 };
 const { Option, OptGroup } = Select;
 
 const Wrapper = styled.div`
   height: 100%;
-  display: flex;
   flex-direction: column;
   padding: 16px 16px;
   .borderNone .ant-select-selector {
@@ -186,13 +282,13 @@ function TradePageInner() {
                 title="Market address"
                 trigger="click"
               >
-                <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                <InfoCircleOutlined style={{ color: '#FFA910' }} />
               </Popover>
             </Col>
           ) : null}
           <Col>
             <PlusCircleOutlined
-              style={{ color: '#2abdd2' }}
+              style={{ color: '#FFA910' }}
               onClick={() => setAddMarketVisible(true)}
             />
           </Col>

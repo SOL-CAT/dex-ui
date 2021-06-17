@@ -125,20 +125,20 @@ export async function settleFunds({
     const usdt = TOKEN_MINTS.find(({ name }) => name === 'USDT');
     const usdc = TOKEN_MINTS.find(({ name }) => name === 'USDC');
     if (
-      "6VQTSXKx9dG2BZST49jBWESzJWi43wY9Rd3pp4HmALx9" &&
+      '6VQTSXKx9dG2BZST49jBWESzJWi43wY9Rd3pp4HmALx9' &&
       usdt &&
       market.quoteMintAddress.equals(usdt.address)
     ) {
       referrerQuoteWallet = new PublicKey(
-        "6VQTSXKx9dG2BZST49jBWESzJWi43wY9Rd3pp4HmALx9",
+        '6VQTSXKx9dG2BZST49jBWESzJWi43wY9Rd3pp4HmALx9',
       );
     } else if (
-      "36QVW1geQEuAoq4mVTo3bNggcpRbUhZx34KZ2PGasLuB" &&
+      '36QVW1geQEuAoq4mVTo3bNggcpRbUhZx34KZ2PGasLuB' &&
       usdc &&
       market.quoteMintAddress.equals(usdc.address)
     ) {
       referrerQuoteWallet = new PublicKey(
-        "36QVW1geQEuAoq4mVTo3bNggcpRbUhZx34KZ2PGasLuB",
+        '36QVW1geQEuAoq4mVTo3bNggcpRbUhZx34KZ2PGasLuB',
       );
     }
   }

@@ -229,7 +229,7 @@
         "website":""
     },
     {
-        "name":"sCAT/USDC",
+        "name":"MEOW/USDC",
         "type":"",
         "supply":"",
         "website":""
@@ -305,5 +305,11 @@
         "type":"",
         "supply":"",
         "website":""
+    },
+    {
+        "name":"PARTI/USDC",
+        "type":"APY Vault Ecosystem",
+        "supply":"10,000,000",
+        "website":"https://parti.finance/"
     }
 ]

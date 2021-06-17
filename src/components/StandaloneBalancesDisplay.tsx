@@ -33,8 +33,8 @@ const Tip = styled.p`
 `;
 
 const ActionButton = styled(Button)`
-  color: #2abdd2;
-  background-color: #212734;
+  color: #FFA910;
+  background-color: #282828;
   border-width: 0px;
 `;
 
@@ -176,7 +176,7 @@ export default function StandaloneBalancesDisplay() {
   ];
 
   return (
-    <FloatingElement style={{ flex: 1, paddingTop: 10, borderRadius:"15px" }}>
+    <FloatingElement style={{ flex: 1, paddingTop: 42, borderRadius:"15px" }}>
       {formattedBalances.map(
         ([currency, balances, baseOrQuote, mint], index) => (
           <React.Fragment key={index}>
@@ -189,7 +189,7 @@ export default function StandaloneBalancesDisplay() {
                   title="Token mint"
                   trigger="hover"
                 >
-                  <InfoCircleOutlined style={{ color: '#2abdd2' }} />
+                  <InfoCircleOutlined style={{ color: '#FFA910' }} />
                 </Popover>
               )}
             </Divider>
