@@ -27,6 +27,7 @@ import { notify } from '../utils/notifications';
 import { useHistory, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import {TVChartContainer} from '../components/TradingView';
+import ReactGA from 'react-ga';
 import marketDataInfo from '../data.json';
 import ETH from '../assets/ETH.png';
 import BTC from '../assets/BTC.png';
@@ -185,6 +186,7 @@ function TradePageInner() {
 
   useEffect(() => {
     document.title = marketName ? `${marketName} — CATO Dex` : 'CATO Dex';
+    marketName && ReactGA.pageview(marketName);
   }, [marketName]);
 
   const changeOrderRef = useRef<
