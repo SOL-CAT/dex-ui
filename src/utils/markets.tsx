@@ -506,6 +506,55 @@ const PARTIUSDCMarketsInfo = {
   baseLabel: "PARTI",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const SNOWSHOEUSDCMarketsInfo = {
+  address: new PublicKey("56ZFVzqMqtDmyry9bK7vi1szUV2nuQ4kT6CzFAB649wE"),
+  deprecated: false,
+  name : "SNOWSHOE/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "SNOWSHOE",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const BOLEUSDCMarketsInfo = {
+  address: new PublicKey("9yGqsboBtvztDgGbGFEaBBT2G8dUMhxewXDQpy6T3eDm"),
+  deprecated: false,
+  name : "BOLE/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "BOLE",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const LIQUSDCMarketsInfo = {
+  address: new PublicKey("FLKUQGh9VAG4otn4njLPUf5gaUPx5aAZ2Q6xWiD3hH5u"),
+  deprecated: false,
+  name : "LIQ/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "LIQ",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const TUTLSOLMarketsInfo = {
+  address: new PublicKey("CtLUvMyGDEP9dkwo9yR93s4H7eibUpUHmVUd9YSKJsPJ"),
+  deprecated: false,
+  name : "TUTL/SOL",
+  quoteLabel: "SOL",
+  baseLabel: "TUTL",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const CAPEUSDCMarketsInfo = {
+  address: new PublicKey("85CTDt8gNfJhmqE3Xm2smDm54HmeT1jvLfPVBTkX8BTX"),
+  deprecated: false,
+  name : "CAPE/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "CAPE",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const SHBLUSDCMarketsInfo = {
+  address: new PublicKey("9G2bAA5Uv8JyPZteuP73GJLUGg5CMbhMLCRSBUBLoXyt"),
+  deprecated: false,
+  name : "SHBL/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "SHBL",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
   address: PublicKey;
@@ -573,6 +622,12 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat( JOKEUSDCMarketsInfo )
 .concat( MEDIAUSDCMarketsInfo )
 .concat(PARTIUSDCMarketsInfo)
+.concat(BOLEUSDCMarketsInfo)
+.concat(SNOWSHOEUSDCMarketsInfo)
+.concat(LIQUSDCMarketsInfo)
+.concat(TUTLSOLMarketsInfo)
+.concat(CAPEUSDCMarketsInfo)
+.concat(SHBLUSDCMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {

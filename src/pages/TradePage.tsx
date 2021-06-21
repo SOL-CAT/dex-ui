@@ -27,6 +27,7 @@ import { notify } from '../utils/notifications';
 import { useHistory, useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import {TVChartContainer} from '../components/TradingView';
+import ReactGA from 'react-ga';
 import marketDataInfo from '../data.json';
 import ETH from '../assets/ETH.png';
 import BTC from '../assets/BTC.png';
@@ -79,6 +80,12 @@ import mBRZ from '../assets/mBRZ.png';
 import MEOW from '../assets/sCAT.jpg';
 import xCOPE from '../assets/COPE.jpg';
 import PARTI from '../assets/PARTI.png';
+import SNOWSHOE from '../assets/snw.png';
+import BOLE from '../assets/BOLE.png';
+import LIQ from '../assets/LIQ.png';
+import TUTL from '../assets/TUTL.png';
+import CAPE from '../assets/CAPE.png';
+import SHBL from '../assets/SHBL.png';
 
 const mockdict = {
   ETH: ETH,
@@ -132,6 +139,12 @@ const mockdict = {
   MEOW: MEOW,
   xCOPE: xCOPE,
   PARTI: PARTI,
+  SNOWSHOW: SNOWSHOE,
+  BOLE: BOLE,
+  LIQ: LIQ,
+  TUTL: TUTL,
+  CAPE: CAPE,
+  SHBL: SHBL,
 };
 const { Option, OptGroup } = Select;
 
@@ -185,6 +198,7 @@ function TradePageInner() {
 
   useEffect(() => {
     document.title = marketName ? `${marketName} — CATO Dex` : 'CATO Dex';
+    marketName && ReactGA.pageview(marketName);
   }, [marketName]);
 
   const changeOrderRef = useRef<
