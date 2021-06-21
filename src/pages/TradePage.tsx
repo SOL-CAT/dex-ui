@@ -20,7 +20,6 @@ import {
   DeleteOutlined,
   InfoCircleOutlined,
   PlusCircleOutlined,
-  ScanOutlined,
 } from '@ant-design/icons';
 import CustomMarketDialog from '../components/CustomMarketDialog';
 import { notify } from '../utils/notifications';
@@ -29,6 +28,7 @@ import { nanoid } from 'nanoid';
 import {TVChartContainer} from '../components/TradingView';
 import ReactGA from 'react-ga';
 import marketDataInfo from '../data.json';
+import adbanner from "../assets/adbanner.svg";
 import ETH from '../assets/ETH.png';
 import BTC from '../assets/BTC.png';
 import CATO from '../assets/CATO.jpg';
@@ -488,7 +488,7 @@ const RenderNormal = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
 const RenderSmall = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   return (
     <>
-    <Banner marketName={marketN}></Banner>
+    <Banner marketName={marketN} smallScreen={true}></Banner>
      <Row style = {{height: '300px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
       <Row
         style={{
@@ -526,7 +526,7 @@ const RenderSmall = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
 const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
   return (
     <>
-    <Banner marketName={marketN}></Banner>
+    <Banner marketName={marketN} smallScreen={true}></Banner>
     <Row style = {{height: '500px', flexWrap: 'nowrap'}}><TVChartContainer  /></Row>
 
       <Row>
@@ -542,46 +542,98 @@ const RenderSmaller = ({ onChangeOrderRef, onPrice, onSize, marketN }) => {
           height: '500px',
         }}
       >
-        <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
           <Orderbook smallScreen={true} onPrice={onPrice} onSize={onSize} />
-        </Col>
-        <Col xs={24} sm={12} style={{ height: '100%', display: 'flex' }}>
-          <TradesTable smallScreen={true} />
-        </Col>
       </Row>
-      <Row>
-        <Col flex="auto">
+      <Row style = {{overflowY:"scroll", height: "300px"}}>
+      <TradesTable smallScreen={true} />
+      </Row>
+      <Row style={{overflowX:"scroll"}}>
           <UserInfoTable />
-        </Col>
       </Row>
     </>
   );
 };
 
-const Banner = ({marketName}) =>{
-  let supply="", typeOfToken="", website="";
+function Banner ({marketName, smallScreen = false}){
+  const [volume, setVolume] = useState();
+  const [mintAddress, setAddress] = useState("");
+  const [liquidity, setLiquidity] = useState();
+  const [holder, setHolder] = useState();
+  const [linkAddress, setLinkAddress] = useState("");
+  const [suppylNumber, setSupply] = useState(0);
+
+  function copyBoard(){
+    navigator.clipboard.writeText(mintAddress);
+  };
+
+  useEffect(() =>{
+    let marketAddressCurrent = localStorage.getItem("marketAddress");
+    let newAddress;
+    if (marketAddressCurrent)
+       newAddress =marketAddressCurrent.substring(1, marketAddressCurrent.length-1);
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer 93a9f904-ca91-4561-8908-8b6466585b8c' }
+    };
+    fetch('https://api.solanabeach.io/v1/market/'+newAddress, requestOptions)
+    .then(result => result.json())
+    .then(data => {
+      setVolume(data.meta.volume24h.toFixed(2))
+      setAddress(data.basemint.address);
+      setLiquidity(data.meta.liquidity.total.toFixed(2));
+      fetch('https://api.solanabeach.io/v1/token/'+data.basemint.address, requestOptions)
+      .then(result => result.json())
+      .then(data =>{
+        setHolder(data.holders);
+        let tempSupply = data.supply.toString();
+        let ll = tempSupply.length;
+        let realSupply = tempSupply.substring(0,ll-data.decimals);
+        setSupply(realSupply);
+        setLinkAddress(data.meta.url);
+      })
+    })
+
+  },[marketName]);
+  let typeOfToken="";
   for (var i=0; i<marketDataInfo.length; i++){
     if (marketDataInfo[i].name===marketName){
-      supply = marketDataInfo[i].supply;
       typeOfToken = marketDataInfo[i].type;
-      website = marketDataInfo[i].website;
       break;
     }
 
   }
+  
   let logoUrl = marketName ? marketName.split('/')[0] : null;
-  let type = "High Risk";
+  let cardStyle =  {height: '100%', width: '100%', background: "#313131", borderRadius:"15px"};
   let riskStyle ={color: "white", verticalAlign: "top", marginLeft: "20px", fontSize: "22px"};
   let titleSpan = <span style={{verticalAlign:"middle"}}><Image style={{top:"10px"}} height='75px' width='75px' src={mockdict[logoUrl]}/><span style={riskStyle}>{marketName}<span style = {{fontSize:"12px", marginLeft:"10px"}}>{typeOfToken}</span></span></span>
   return(
-    <Row style={{height: '220px', flexWrap: 'nowrap', marginBottom: "50px"}}>
-        <Card bordered={false} style = {{height: '100%', width: '100%', background: "#313131", borderRadius:"15px  "}} title = {titleSpan }>
+    !smallScreen ? 
+    <Row style={{height: '250px', flexWrap: 'nowrap', marginBottom: "50px", marginTop: "50px"}}>
+      <Col style={{width:"60%"}}>
+        <Card bordered={false} style = {cardStyle} title = {titleSpan }>
           <Row style ={{height:"100%"}}>
             <Col style = {{textAlign: "left", width: "50%"}}>
-            Supply
+            Volume
             </Col>
             <Col style = {{textAlign: "right", width: "50%"}}>
-            {supply}
+            {volume}
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Mint Address
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%", overflowX:"hidden"}}>
+            <span className="lookLikeLink" onClick={copyBoard}>{"Click to copy"}</span>
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Liquidity
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {liquidity}
             </Col>
           </Row>
           <Row style ={{height:"100%"}}>
@@ -589,11 +641,93 @@ const Banner = ({marketName}) =>{
             Website
             </Col>
             <Col style = {{textAlign: "right", width: "50%"}}>
-            <a href = {website}>{website}</a>
+            <a href = {linkAddress} target = "_blank" rel="noopener noreferrer">{"Take me there"}</a>
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Holders
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {holder}
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Supply
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {suppylNumber}
             </Col>
           </Row>
           
         </Card>
-        
-    </Row>)
+        </Col>
+      <Col style = {{width: "40%", textAlign:"center"}}>
+      <Image style = {{height:"250px", width: "250px"}} src = {adbanner}/>
+      </Col>
+    </Row>
+    :
+    <Row style={{height: '500px', flexWrap: 'nowrap', marginBottom: "50px", marginTop: "50px"}}>
+      <Col style = {{width:"100%"}}>
+      <Row style = {{height:"50%"}}>
+      <Card bordered={false} style = {cardStyle} title = {titleSpan }>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Volume
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {volume}
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Mint Address
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%", overflowX:"hidden"}}>
+            <span className="lookLikeLink" onClick={copyBoard}>{"Click to copy"}</span>
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Liquidity
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {liquidity}
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Website
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            <a href = {linkAddress} target = "_blank" rel="noopener noreferrer">{"Take me there"}</a>
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Holders
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {holder}
+            </Col>
+          </Row>
+          <Row style ={{height:"100%"}}>
+            <Col style = {{textAlign: "left", width: "50%"}}>
+            Supply
+            </Col>
+            <Col style = {{textAlign: "right", width: "50%"}}>
+            {suppylNumber}
+            </Col>
+          </Row>
+          
+        </Card>
+       </Row>
+        <Row style = {{height:"50%"}}>
+        <Image style = {{height:"250px", width: "250px"}} src = {adbanner}/>
+        </Row>
+        </Col>  
+    </Row>
+    
+    )
 };

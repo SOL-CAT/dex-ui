@@ -93,4 +93,15 @@ input[type=number]:focus::-webkit-inner-spin-button {
 webkit-box-shadow :0px;
 box-shadow: 0px;
 }
+.ant-card-head{
+  max-height: 85px;
+}
+.lookLikeLink:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+.lookLikeLink{
+  color: #FFA910;
+
+}
 `;
