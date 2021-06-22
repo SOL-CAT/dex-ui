@@ -198,7 +198,11 @@ function TradePageInner() {
 
   useEffect(() => {
     document.title = marketName ? `${marketName} — CATO Dex` : 'CATO Dex';
-    marketName && ReactGA.pageview(marketName);
+    if (window.location.hostname === 'localhost'){
+      //do nothing
+    }
+    else
+      marketName && ReactGA.pageview(marketName);
   }, [marketName]);
 
   const changeOrderRef = useRef<
@@ -578,18 +582,18 @@ function Banner ({marketName, smallScreen = false}){
     fetch('https://api.solanabeach.io/v1/market/'+newAddress, requestOptions)
     .then(result => result.json())
     .then(data => {
-      setVolume(data.meta.volume24h.toFixed(2))
-      setAddress(data.basemint.address);
-      setLiquidity(data.meta.liquidity.total.toFixed(2));
+      data.meta && data.meta.volume24h && setVolume(data.meta.volume24h.toFixed(2))
+      data.basemint && data.basemint.address && setAddress(data.basemint.address);
+      data.meta && data.meta.liquidity && data.meta.liquidity.total && setLiquidity(data.meta.liquidity.total.toFixed(2));
       fetch('https://api.solanabeach.io/v1/token/'+data.basemint.address, requestOptions)
       .then(result => result.json())
       .then(data =>{
-        setHolder(data.holders);
+        data.holders && setHolder(data.holders);
         let tempSupply = data.supply.toString();
         let ll = tempSupply.length;
         let realSupply = tempSupply.substring(0,ll-data.decimals);
         setSupply(realSupply);
-        setLinkAddress(data.meta.url);
+        data.meta && data.meta.url && setLinkAddress(data.meta.url);
       })
     })
 
@@ -617,7 +621,7 @@ function Banner ({marketName, smallScreen = false}){
             Volume
             </Col>
             <Col style = {{textAlign: "right", width: "50%"}}>
-            {volume}
+            {volume}{"$"}
             </Col>
           </Row>
           <Row style ={{height:"100%"}}>
@@ -633,7 +637,7 @@ function Banner ({marketName, smallScreen = false}){
             Liquidity
             </Col>
             <Col style = {{textAlign: "right", width: "50%"}}>
-            {liquidity}
+            {liquidity}{"$"}
             </Col>
           </Row>
           <Row style ={{height:"100%"}}>
@@ -677,7 +681,7 @@ function Banner ({marketName, smallScreen = false}){
             Volume
             </Col>
             <Col style = {{textAlign: "right", width: "50%"}}>
-            {volume}
+            {volume}{"$"}
             </Col>
           </Row>
           <Row style ={{height:"100%"}}>
@@ -693,7 +697,7 @@ function Banner ({marketName, smallScreen = false}){
             Liquidity
             </Col>
             <Col style = {{textAlign: "right", width: "50%"}}>
-            {liquidity}
+            {liquidity}{"$"}
             </Col>
           </Row>
           <Row style ={{height:"100%"}}>

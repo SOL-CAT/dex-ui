@@ -22,6 +22,7 @@ import LinkAddress from './LinkAddress';
 import {InfoCircleOutlined} from '@ant-design/icons';
 import {useInterval} from "../utils/useInterval";
 import {useLocalStorageState} from "../utils/utils";
+import ReactGA from 'react-ga';
 
 const RowBox = styled(Row)`
   padding-bottom: 20px;
@@ -100,8 +101,16 @@ export default function StandaloneBalancesDisplay() {
       });
       return;
     }
-
+    let currentMarket = localStorage.getItem("marketAddress") ? localStorage.getItem("marketAddress") : '"Market Address not found"';
+      let finalEventLabel = currentMarket?.substring(1, currentMarket.length-1);
     try {
+      if (window.location.hostname!=='localhost')
+      ReactGA.event({
+        category: "Settle Fund",
+        action: "Clicked on settle",
+        label: finalEventLabel
+      });
+      
       await settleFunds({
         market,
         openOrders: openOrdersAccount,
@@ -111,6 +120,13 @@ export default function StandaloneBalancesDisplay() {
         quoteCurrencyAccount,
       });
     } catch (e) {
+      if (window.location.hostname!=='localhost')
+      ReactGA.event({
+        category: "Error in settle Fund",
+        action: "Error on settle",
+        label: finalEventLabel
+      });
+
       notify({
         message: 'Error settling funds',
         description: e.message,
