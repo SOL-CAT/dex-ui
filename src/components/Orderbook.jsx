@@ -44,7 +44,12 @@ const Price = styled.div`
   color: white;
 `;
 
-export default function Orderbook({ smallScreen, depth = 7, onPrice, onSize }) {
+export default function Orderbook({
+  smallScreen,
+  depth = 20,
+  onPrice,
+  onSize,
+}) {
   const markPrice = useMarkPrice();
   const [orderbook] = useOrderbook();
   const { baseCurrency, quoteCurrency } = useMarket();
@@ -109,8 +114,13 @@ export default function Orderbook({ smallScreen, depth = 7, onPrice, onSize }) {
     <FloatingElement
       style={
         smallScreen
-          ? { flex: 1, borderRadius: '15px' }
-          : { height: '500px', overflow: 'hidden', borderRadius: '15px' }
+          ? {
+              flex: 1,
+              borderRadius: '15px',
+              maxHeight: '90%',
+              overflow: 'scroll',
+            }
+          : { height: '500px', overflow: 'scroll', borderRadius: '15px' }
       }
     >
       <Title>Orderbook</Title>
