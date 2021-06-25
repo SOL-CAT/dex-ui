@@ -28,7 +28,7 @@ import { nanoid } from 'nanoid';
 import {TVChartContainer} from '../components/TradingView';
 import ReactGA from 'react-ga';
 import marketDataInfo from '../data.json';
-import adbanner from "../assets/adbanner.svg";
+import adbanner from "../assets/1.gif";
 import ETH from '../assets/ETH.png';
 import BTC from '../assets/BTC.png';
 import CATO from '../assets/CATO.jpg';
@@ -37,7 +37,7 @@ import CHEEMS from '../assets/CHEEMS.png';
 import COPE from '../assets/COPE.jpg';
 import CREAM from '../assets/CREAM.png';
 import DOGA from '../assets/DOGA.png';
-import FAB from '../assets/FAB.png';
+import FAB from '../assets/FAB.svg';
 import FIDA from '../assets/FIDA.svg';
 import FROG from '../assets/FROG.jpeg';
 import FRONT from '../assets/FRONT.png';
@@ -86,6 +86,8 @@ import LIQ from '../assets/LIQ.png';
 import TUTL from '../assets/TUTL.png';
 import CAPE from '../assets/CAPE.png';
 import SHBL from '../assets/SHBL.png';
+import FEFE from '../assets/FEFE.jpg';
+import NOPE from '../assets/NOPE.jpg';
 
 const mockdict = {
   ETH: ETH,
@@ -145,6 +147,8 @@ const mockdict = {
   TUTL: TUTL,
   CAPE: CAPE,
   SHBL: SHBL,
+  FEFE: FEFE,
+  NOPE: NOPE,
 };
 const { Option, OptGroup } = Select;
 
@@ -668,7 +672,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
         </Col>
       <Col style = {{width: "40%", textAlign:"center"}}>
-      <Image style = {{height:"250px", width: "250px"}} src = {adbanner}/>
+      <a href="https://twitter.com/SolanaCATO/status/1407601974837612549"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
       </Col>
     </Row>
     :
@@ -728,7 +732,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
        </Row>
         <Row style = {{height:"50%"}}>
-        <Image style = {{height:"250px", width: "250px"}} src = {adbanner}/>
+        <a href="https://twitter.com/SolanaCATO/status/1407601974837612549"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
         </Row>
         </Col>  
     </Row>

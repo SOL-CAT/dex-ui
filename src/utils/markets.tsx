@@ -554,6 +554,14 @@ const SHBLUSDCMarketsInfo = {
   baseLabel: "SHBL",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const LIQSOLMarketsInfo = {
+  address: new PublicKey("F7SrwFTQ8uWBs9zhN9fctLKLJdEAz8fu7XmNyi9Sebht"),
+  deprecated: false,
+  name : "LIQ/SOL",
+  quoteLabel: "SOL",
+  baseLabel: "LIQ",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
@@ -628,6 +636,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(TUTLSOLMarketsInfo)
 .concat(CAPEUSDCMarketsInfo)
 .concat(SHBLUSDCMarketsInfo)
+.concat(LIQSOLMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {
