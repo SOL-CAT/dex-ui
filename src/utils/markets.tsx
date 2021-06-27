@@ -323,7 +323,7 @@ const MSRMUSDCMarketsInfo = {
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
 const NINJAUSDCMarketsInfo = {
-  address: new PublicKey("88HrMUm3RtXGF2F4Ftnb7P9Fdh2yz9qfmAgp7jh2CFs9"),
+  address: new PublicKey("J4oPt5Q3FYxrznkXLkbosAWrJ4rZLqJpGqz7vZUL4eMM"),
   deprecated: false,
   name : "NINJA/USDC",
   quoteLabel: "USDC",
@@ -562,6 +562,14 @@ const LIQSOLMarketsInfo = {
   baseLabel: "LIQ",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const APEXUSDCMarketsInfo = {
+  address: new PublicKey("GX26tyJyDxiFj5oaKvNB9npAHNgdoV9ZYHs5ijs5yG2U"),
+  deprecated: false,
+  name : "APEX/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "APEX",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
@@ -637,6 +645,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(CAPEUSDCMarketsInfo)
 .concat(SHBLUSDCMarketsInfo)
 .concat(LIQSOLMarketsInfo)
+.concat(APEXUSDCMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {

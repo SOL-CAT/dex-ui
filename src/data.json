@@ -347,6 +347,12 @@
         "type":"Meme Token",
         "supply":"9,599,999,998",
         "website":"https://shoebillco.in/"
+    },
+    {
+        "name":"APEX/USDC",
+        "type":"Risk Management tool",
+        "supply":"14,000,000",
+        "website":"https://apexit.finance/"
     }
 
 ]

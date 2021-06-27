@@ -28,7 +28,7 @@ import { nanoid } from 'nanoid';
 import {TVChartContainer} from '../components/TradingView';
 import ReactGA from 'react-ga';
 import marketDataInfo from '../data.json';
-import adbanner from "../assets/1.gif";
+import adbanner from "../assets/1.png";
 import ETH from '../assets/ETH.png';
 import BTC from '../assets/BTC.png';
 import CATO from '../assets/CATO.jpg';
@@ -88,6 +88,7 @@ import CAPE from '../assets/CAPE.png';
 import SHBL from '../assets/SHBL.png';
 import FEFE from '../assets/FEFE.jpg';
 import NOPE from '../assets/NOPE.jpg';
+import APEX from '../assets/APEX.png';
 
 const mockdict = {
   ETH: ETH,
@@ -149,6 +150,7 @@ const mockdict = {
   SHBL: SHBL,
   FEFE: FEFE,
   NOPE: NOPE,
+  APEX: APEX,
 };
 const { Option, OptGroup } = Select;
 
@@ -672,7 +674,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
         </Col>
       <Col style = {{width: "40%", textAlign:"center"}}>
-      <a href="https://twitter.com/SolanaCATO/status/1407601974837612549"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
+      <a href="https://bit.ly/3quFg5j"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
       </Col>
     </Row>
     :
@@ -732,7 +734,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
        </Row>
         <Row style = {{height:"50%"}}>
-        <a href="https://twitter.com/SolanaCATO/status/1407601974837612549"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
+        <a href="https://bit.ly/3quFg5j"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
         </Row>
         </Col>  
     </Row>
