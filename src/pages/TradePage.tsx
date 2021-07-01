@@ -89,6 +89,7 @@ import SHBL from '../assets/SHBL.png';
 import FEFE from '../assets/FEFE.jpg';
 import NOPE from '../assets/NOPE.jpg';
 import APEX from '../assets/APEX.png';
+import GU from '../assets/GU.png';
 
 const mockdict = {
   ETH: ETH,
@@ -151,6 +152,7 @@ const mockdict = {
   FEFE: FEFE,
   NOPE: NOPE,
   APEX: APEX,
+  GU: GU,
 };
 const { Option, OptGroup } = Select;
 

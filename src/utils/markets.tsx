@@ -570,6 +570,14 @@ const APEXUSDCMarketsInfo = {
   baseLabel: "APEX",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const GUUSDCMarketsInfo = {
+  address: new PublicKey("2QXXnRnSBi4tviNUAsYv7tYDvYb17BQhK5MxR4sX5J3B"),
+  deprecated: false,
+  name : "GÜ/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "GÜ",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
@@ -646,6 +654,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(SHBLUSDCMarketsInfo)
 .concat(LIQSOLMarketsInfo)
 .concat(APEXUSDCMarketsInfo)
+.concat(GUUSDCMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {
