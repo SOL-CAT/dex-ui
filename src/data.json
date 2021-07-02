@@ -359,6 +359,18 @@
         "type":" ",
         "supply":"10,000,000",
         "website":"https://kugle.org/"
+    },
+    {
+        "name":"DGX/USDC",
+        "type":" ",
+        "supply":"",
+        "website":""
+    },
+    {
+        "name":"TGT/USDC",
+        "type":"Twirl Governance Token",
+        "supply":"100000",
+        "website":"https://www.twirlfinance.com/"
     }
 
 ]
