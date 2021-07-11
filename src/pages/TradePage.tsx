@@ -680,7 +680,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
         </Col>
       <Col style = {{width: "40%", textAlign:"center"}}>
-      <a href="https://bit.ly/3xg2TkC"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
+      <a href="https://bit.ly/3yCymxQ"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
       </Col>
     </Row>
     :
@@ -740,7 +740,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
        </Row>
         <Row style = {{height:"50%"}}>
-        <a href="https://bit.ly/3xg2TkC"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
+        <a href="https://bit.ly/3yCymxQ"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
         </Row>
         </Col>  
     </Row>
