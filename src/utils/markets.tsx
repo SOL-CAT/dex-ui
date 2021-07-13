@@ -130,10 +130,10 @@ const DOGAUSDCMarketsInfo = {
   baseLabel: "DOGA",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
-const FABUSDCMarketsInfo = {
+const FABoldUSDCMarketsInfo = {
   address: new PublicKey("GHPhJm8F5Kg4Xq3nxHfN2SKsgPwNPMuB8FHFsLE6RP8M"),
   deprecated: false,
-  name : "FAB/USDC",
+  name : "FAB/USDC (Old)",
   quoteLabel: "USDC",
   baseLabel: "FAB",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
@@ -594,6 +594,30 @@ const TGTUSDCMarketsInfo = {
   baseLabel: "TGT",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const FABUSDCMarketsInfo = {
+  address: new PublicKey("Cud48DK2qoxsWNzQeTL5D8sAiHsGwG8Ev1VMNcYLayxt"),
+  deprecated: false,
+  name : "FAB/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "FAB",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const BOPRAYMarketsInfo = {
+  address: new PublicKey("6Fcw8aEs7oP7YeuMrM2JgAQUotYxa4WHKHWdLLXssA3R"),
+  deprecated: false,
+  name : "BOP/RAY",
+  quoteLabel: "RAY",
+  baseLabel: "BOP",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const LIQRAYMarketsInfo = {
+  address: new PublicKey("FL8yPAyVTepV5YfzDfJvNu6fGL7Rcv5v653LdZ6h4Bsu"),
+  deprecated: false,
+  name : "LIQ/RAY",
+  quoteLabel: "RAY",
+  baseLabel: "LIQ",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
@@ -615,7 +639,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat( CREAMUSDCMarketsInfo )
 .concat( DGENUSDCMarketsInfo )
 .concat( DOGAUSDCMarketsInfo )
-.concat( FABUSDCMarketsInfo )
+.concat( FABoldUSDCMarketsInfo )
 .concat( FEFEUSDCMarketsInfo )
 .concat( FIDAUSDCMarketsInfo )
 .concat( FRENCHUSDCMarketsInfo )
@@ -673,6 +697,9 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(GUUSDCMarketsInfo)
 .concat(DGXUSDCMarketsInfo)
 .concat(TGTUSDCMarketsInfo)
+.concat(FABUSDCMarketsInfo)
+.concat(BOPRAYMarketsInfo)
+.concat(LIQRAYMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {

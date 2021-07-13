@@ -42,7 +42,7 @@
         "website":""
     },
     {
-        "name":"FAB/USDC",
+        "name":"FAB/USDC (Old)",
         "type":"",
         "supply":"",
         "website":""
@@ -371,6 +371,24 @@
         "type":"Twirl Governance Token",
         "supply":"100000",
         "website":"https://www.twirlfinance.com/"
+    },
+    {
+        "name":"FAB/USDC",
+        "type":"Tokenized Synthetic Assets",
+        "supply":"",
+        "website":"https://fsynth.io/"
+    },
+    {
+        "name":"BOP/RAY",
+        "type":"Decentralized VPN on Solana",
+        "supply":"250000000",
+        "website":"https://boringprotocol.io/"
+    },
+    {
+        "name":"LIQ/RAY",
+        "type":"Decentralized Liquidation Engine",
+        "supply":"20,000,000",
+        "website":"https://liqsolana.com/"
     }
 
 ]

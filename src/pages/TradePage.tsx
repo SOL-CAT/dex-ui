@@ -37,7 +37,7 @@ import CHEEMS from '../assets/CHEEMS.png';
 import COPE from '../assets/COPE.jpg';
 import CREAM from '../assets/CREAM.png';
 import DOGA from '../assets/DOGA.png';
-import FAB from '../assets/FAB.svg';
+import FABold from '../assets/FAB.svg';
 import FIDA from '../assets/FIDA.svg';
 import FROG from '../assets/FROG.jpeg';
 import FRONT from '../assets/FRONT.png';
@@ -92,6 +92,7 @@ import APEX from '../assets/APEX.png';
 import GÜ from '../assets/GU.png';
 import DGX from '../assets/DGX.png';
 import TGT from '../assets/TGT.webp';
+import FAB from '../assets/FAB.svg'
 
 const mockdict = {
   ETH: ETH,
@@ -102,7 +103,7 @@ const mockdict = {
   COPE: COPE,
   CREAM: CREAM,
   DOGA: DOGA,
-  FAB: FAB,
+  FABold: FABold,
   FIDA: FIDA,
   FROG: FROG,
   FRONT: FRONT,
@@ -157,6 +158,7 @@ const mockdict = {
   GÜ: GÜ,
   DGX: DGX,
   TGT: TGT,
+  FAB: FAB,
 };
 const { Option, OptGroup } = Select;
 
