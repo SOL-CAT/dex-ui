@@ -618,6 +618,22 @@ const LIQRAYMarketsInfo = {
   baseLabel: "LIQ",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const CMCUSDCMarketsInfo = {
+  address: new PublicKey("28UzKVL5kwzPA9xdLFYJRManeY6RHgmTiU5K1h13XCRv"),
+  deprecated: false,
+  name : "CMC/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "CMC",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const CHADUSDCMarketsInfo = {
+  address: new PublicKey("5zmZq5Ydz3R5h5kf7wVb3KPJEZrNDUHWVbtjXZTQ4fv3"),
+  deprecated: false,
+  name : "CHAD/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "CHAD",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
@@ -700,6 +716,8 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(FABUSDCMarketsInfo)
 .concat(BOPRAYMarketsInfo)
 .concat(LIQRAYMarketsInfo)
+.concat(CMCUSDCMarketsInfo)
+.concat(CHADUSDCMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {

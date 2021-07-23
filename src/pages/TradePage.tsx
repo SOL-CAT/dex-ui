@@ -92,7 +92,9 @@ import APEX from '../assets/APEX.png';
 import GÜ from '../assets/GU.png';
 import DGX from '../assets/DGX.png';
 import TGT from '../assets/TGT.webp';
-import FAB from '../assets/FAB.svg'
+import FAB from '../assets/FAB.svg';
+import CMC from '../assets/CMC.png';
+import CHAD from '../assets/CHAD.png';
 
 const mockdict = {
   ETH: ETH,
@@ -159,6 +161,8 @@ const mockdict = {
   DGX: DGX,
   TGT: TGT,
   FAB: FAB,
+  CMC: CMC,
+  CHAD: CHAD,
 };
 const { Option, OptGroup } = Select;
 
@@ -682,7 +686,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
         </Col>
       <Col style = {{width: "40%", textAlign:"center"}}>
-      <a href="https://bit.ly/3yCymxQ"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
+      <a href="https://twitter.com/coin98_wallet/status/1417834637263441920/photo/1"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
       </Col>
     </Row>
     :
@@ -742,7 +746,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
        </Row>
         <Row style = {{height:"50%"}}>
-        <a href="https://bit.ly/3yCymxQ"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
+        <a href="https://twitter.com/coin98_wallet/status/1417834637263441920/photo/1"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
         </Row>
         </Col>  
     </Row>
