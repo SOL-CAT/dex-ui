@@ -618,12 +618,12 @@ const LIQRAYMarketsInfo = {
   baseLabel: "LIQ",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
-const CMCUSDCMarketsInfo = {
+const CRCUSDCMarketsInfo = {
   address: new PublicKey("28UzKVL5kwzPA9xdLFYJRManeY6RHgmTiU5K1h13XCRv"),
   deprecated: false,
-  name : "CMC/USDC",
+  name : "CRC/USDC",
   quoteLabel: "USDC",
-  baseLabel: "CMC",
+  baseLabel: "CRC",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
 const CHADUSDCMarketsInfo = {
@@ -716,7 +716,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(FABUSDCMarketsInfo)
 .concat(BOPRAYMarketsInfo)
 .concat(LIQRAYMarketsInfo)
-.concat(CMCUSDCMarketsInfo)
+.concat(CRCUSDCMarketsInfo)
 .concat(CHADUSDCMarketsInfo)
   : MARKETS;
 

@@ -93,7 +93,7 @@ import GÜ from '../assets/GU.png';
 import DGX from '../assets/DGX.png';
 import TGT from '../assets/TGT.webp';
 import FAB from '../assets/FAB.svg';
-import CMC from '../assets/CMC.png';
+import CRC from '../assets/CMC.png';
 import CHAD from '../assets/CHAD.png';
 
 const mockdict = {
@@ -161,7 +161,7 @@ const mockdict = {
   DGX: DGX,
   TGT: TGT,
   FAB: FAB,
-  CMC: CMC,
+  CRC: CRC,
   CHAD: CHAD,
 };
 const { Option, OptGroup } = Select;
