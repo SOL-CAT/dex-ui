@@ -1,7 +1,7 @@
 import { BonfidaTrade } from './types';
 
 export default class BonfidaApi {
-  static URL: string = 'https://dry-ravine-67635.herokuapp.com/';
+  static URL: string = 'http://localhost:5000/catodex/apis/';
 
   static async get(path: string) {
     try {
