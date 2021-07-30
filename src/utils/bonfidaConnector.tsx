@@ -1,7 +1,7 @@
 import { BonfidaTrade } from './types';
 
 export default class BonfidaApi {
-  static URL: string = 'http://localhost:5000/catodex/apis/';
+  static URL: string = 'http://31.220.52.230/catodex/apis/';
 
   static async get(path: string) {
     try {

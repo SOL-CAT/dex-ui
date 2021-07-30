@@ -37,7 +37,7 @@ export const TVChartContainer = () => {
     interval: '60' as ResolutionString,
     theme: 'Light',
     containerId: 'tv_chart_container',
-    datafeedUrl: 'http://localhost:5000/catodex/apis/tv',
+    datafeedUrl: 'http://31.220.52.230/catodex/apis/tv',
     libraryPath: '/charting_library/',
     fullscreen: false,
     autosize: true,
