@@ -37,7 +37,7 @@ export const TVChartContainer = () => {
     interval: '60' as ResolutionString,
     theme: 'Light',
     containerId: 'tv_chart_container',
-    datafeedUrl: 'http://31.220.52.230/catodex/apis/tv',
+    datafeedUrl: 'https://dry-ravine-67635.herokuapp.com/tv',
     libraryPath: '/charting_library/',
     fullscreen: false,
     autosize: true,
@@ -59,7 +59,6 @@ export const TVChartContainer = () => {
       datafeed: new (window as any).Datafeeds.UDFCompatibleDatafeed(
         defaultProps.datafeedUrl,
       ),
-      container:"x",
       interval: defaultProps.interval as ChartingLibraryWidgetOptions['interval'],
       container_id: defaultProps.containerId as ChartingLibraryWidgetOptions['container_id'],
       library_path: defaultProps.libraryPath as string,

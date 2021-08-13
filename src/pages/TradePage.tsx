@@ -95,6 +95,13 @@ import TGT from '../assets/TGT.webp';
 import FAB from '../assets/FAB.svg';
 import CRC from '../assets/CMC.png';
 import CHAD from '../assets/CHAD.png';
+import MNGO from '../assets/MNGO.svg';
+import ORCA from '../assets/ORCA.png';
+import SBR from '../assets/SBR.svg';
+import GSAIL from '../assets/GSAIL.png';
+import LIKE from '../assets/ONLY1.svg';
+
+
 
 const mockdict = {
   ETH: ETH,
@@ -163,6 +170,11 @@ const mockdict = {
   FAB: FAB,
   CRC: CRC,
   CHAD: CHAD,
+  MNGO: MNGO,
+  LIKE: LIKE,
+  SBR: SBR,
+  GSAIL: GSAIL,
+  ORCA: ORCA,
 };
 const { Option, OptGroup } = Select;
 
