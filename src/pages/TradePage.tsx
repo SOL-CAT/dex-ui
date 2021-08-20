@@ -100,6 +100,7 @@ import ORCA from '../assets/ORCA.png';
 import SBR from '../assets/SBR.svg';
 import GSAIL from '../assets/GSAIL.png';
 import LIKE from '../assets/ONLY1.svg';
+import STEP from '../assets/step.png';
 
 
 
@@ -175,6 +176,7 @@ const mockdict = {
   SBR: SBR,
   GSAIL: GSAIL,
   ORCA: ORCA,
+  STEP: STEP,
 };
 const { Option, OptGroup } = Select;
 
@@ -698,7 +700,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
         </Col>
       <Col style = {{width: "40%", textAlign:"center"}}>
-      <a href="https://twitter.com/coin98_wallet/status/1417834637263441920/photo/1"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
+      <a href="https://twitter.com/SolanaCATO/status/1427898742506590221"><Image style = {{height:"250px", width: "450px"}} src = {adbanner}/></a>
       </Col>
     </Row>
     :
@@ -758,7 +760,7 @@ function Banner ({marketName, smallScreen = false}){
         </Card>
        </Row>
         <Row style = {{height:"50%"}}>
-        <a href="https://twitter.com/coin98_wallet/status/1417834637263441920/photo/1"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
+        <a href="https://twitter.com/SolanaCATO/status/1427898742506590221"><Image style = {{height:"250px", width: "345px"}} src = {adbanner}/></a>
         </Row>
         </Col>  
     </Row>

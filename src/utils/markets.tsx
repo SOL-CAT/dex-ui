@@ -651,7 +651,7 @@ const SBRUSDCMarketsInfo = {
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
 const GSAILUSDCMarketsInfo = {
-  address: new PublicKey("3JR9wrufTbpT7rGzKJi3hGja7ZD9bd6VEEHhANiA9Hhu"),
+  address: new PublicKey("2zkPyHgQkKG6qJED6MTbjfCfUbZeT9VFwLm1Ld9nKxRp"),
   deprecated: false,
   name : "GSAIL/USDC",
   quoteLabel: "USDC",
@@ -672,6 +672,14 @@ const ORCAUSDCMarketsInfo = {
   name : "ORCA/USDC",
   quoteLabel: "USDC",
   baseLabel: "ORCA",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
+const STEPUSDCMarketsInfo = {
+  address: new PublicKey("97qCB4cAVSTthvJu3eNoEx6AY6DLuRDtCoPm5Tdyg77S"),
+  deprecated: false,
+  name : "STEP/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "STEP",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
 
@@ -763,6 +771,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(LIKEUSDCMarketsInfo)
 .concat(GSAILUSDCMarketsInfo)
 .concat(ORCAUSDCMarketsInfo)
+.concat(STEPUSDCMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {

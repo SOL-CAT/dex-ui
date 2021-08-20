@@ -422,7 +422,7 @@
     },
     {
         "name":"GSAIL/USDC",
-        "type":"",
+        "type":"GSAIL V2",
         "supply":"",
         "website":"https://www.solanasail.com/"
     },
@@ -431,6 +431,12 @@
         "type":"ONLY1",
         "supply":"",
         "website":"https://LIKE.io/"
+    },
+    {
+        "name":"STEP/USDC",
+        "type":"",
+        "supply":"",
+        "website":"https://step.finance/"
     }
 
 ]
