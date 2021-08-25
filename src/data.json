@@ -7,8 +7,8 @@
     },
     {
         "name":"CATO/USDC",
-        "type":"MEME Token",
-        "supply":"350,292,422",
+        "type":"",
+        "supply":"",
         "website":"https://www.solanacato.com/"
     },
     {
@@ -437,6 +437,12 @@
         "type":"",
         "supply":"",
         "website":"https://step.finance/"
+    },
+    {
+        "name":"CRP/USDC",
+        "type":"",
+        "supply":"",
+        "website":"https://cropper.finance/"
     }
 
 ]

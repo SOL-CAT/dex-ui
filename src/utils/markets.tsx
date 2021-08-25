@@ -682,6 +682,14 @@ const STEPUSDCMarketsInfo = {
   baseLabel: "STEP",
   programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
 };
+const CRPUSDCMarketsInfo = {
+  address: new PublicKey("8nXjHLfiR6wB22J7VBGeKjsRiSa54Eu7cgL17GE4kJUw"),
+  deprecated: false,
+  name : "CRP/USDC",
+  quoteLabel: "USDC",
+  baseLabel: "CRP",
+  programId: new PublicKey("9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin")
+};
 
 export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
   ? Array<{
@@ -772,6 +780,7 @@ export const USE_MARKETS: MarketInfo[] = _IGNORE_DEPRECATED
 .concat(GSAILUSDCMarketsInfo)
 .concat(ORCAUSDCMarketsInfo)
 .concat(STEPUSDCMarketsInfo)
+.concat(CRPUSDCMarketsInfo)
   : MARKETS;
 
 export function useMarketsList() {

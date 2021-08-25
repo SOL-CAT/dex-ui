@@ -101,6 +101,7 @@ import SBR from '../assets/SBR.svg';
 import GSAIL from '../assets/GSAIL.png';
 import LIKE from '../assets/ONLY1.svg';
 import STEP from '../assets/step.png';
+import CRP from '../assets/CRP.png';
 
 
 
@@ -177,6 +178,7 @@ const mockdict = {
   GSAIL: GSAIL,
   ORCA: ORCA,
   STEP: STEP,
+  CRP: CRP,
 };
 const { Option, OptGroup } = Select;
 
