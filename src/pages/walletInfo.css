@@ -1,0 +1,25 @@
+.profileComponent {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.widthCustomDivider {
+  border-color: #ffa910;
+}
+.outerCard > .ant-card-body {
+  height: 100%;
+}
+.transaction-table {
+  padding-top: 10px;
+  border: #ffa910 1px solid;
+}
+.transaction-table .ant-table-row {
+  background: #cbcac8;
+}
+.transaction-table .ant-table-tbody .ant-table-cell {
+  color: black;
+}
+.transaction-table .ant-table-tbody > tr.ant-table-row-level-0:hover > td {
+  background: unset;
+}

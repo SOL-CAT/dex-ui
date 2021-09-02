@@ -10,6 +10,7 @@ import NewPoolPage from './pages/pools/NewPoolPage';
 import PoolPage from './pages/pools/PoolPage';
 import PoolListPage from './pages/pools/PoolListPage';
 import { getTradePageUrl } from './utils/markets';
+import WalletInfo from './pages/WalletInfo';
 
 export function Routes() {
   return (
@@ -39,6 +40,9 @@ export function Routes() {
             </Route>
             <Route exact path="/pools/:poolAddress">
               <PoolPage />
+            </Route>
+            <Route exact path="/wallets">
+              <WalletInfo />
             </Route>
           </Switch>
         </BasicLayout>
