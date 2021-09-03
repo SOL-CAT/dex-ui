@@ -7,6 +7,7 @@ import { Connection, PublicKey } from '@solana/web3.js';
 import _ from "lodash";
 import moment from "moment";
 import details from "./logoInfo.json";
+import allTokens from "./tokenInfoBackup.json";
 import { LaptopOutlined, DashboardOutlined, LoadingOutlined, SwapOutlined, FileImageOutlined} from '@ant-design/icons';
 const { Content,  Sider } = Layout;
 const { Meta } = Card;
@@ -97,7 +98,8 @@ export default function BalancesPage() {
     tokenName: "Overall",
     effectiveMint: "All",
     amount: 0,
-    marketAddress: ""
+    marketAddress: "",
+    disabled: false
   }]);
   const [tokenGraphDetails, setTokenGraphDetails] = useState([]);
   const [activeMenuKey, setActiveMenuKey] = useState("All");
@@ -397,8 +399,8 @@ export default function BalancesPage() {
   const chartCard = (selectedKey) => {
     let pnlChartConfig, valueLineChartConfig;
     if (selectedKey === "All"){
-      pnlChartConfig = columnChartDataFormat();
-      valueLineChartConfig = lineChartDataFormat();
+      pnlChartConfig = apiResponse.ownerAddress && columnChartDataFormat();
+      valueLineChartConfig = apiResponse.ownerAddress && lineChartDataFormat();
     }
     else{
       let mintTokenData = tokenGraphDetails[activeMenuKey];
@@ -413,10 +415,10 @@ export default function BalancesPage() {
       </Row>
       <Row align="middle" style = {{paddingBottom: "40px"}}  gutter={40} >
         <Col span={8}>
-          {pieChartCard()}
+          {apiResponse.ownerAddress && pieChartCard()}
         </Col>
         <Col span={16}>
-          {pnlChartCard(pnlChartConfig)}
+          {apiResponse.ownerAddress && pnlChartCard(pnlChartConfig)}
         </Col>
       </Row>
       <Row align="middle"  gutter={40} >
@@ -424,7 +426,11 @@ export default function BalancesPage() {
           {netWorthCard()}
         </Col>
         <Col span={16}>
-          {valueLineChartCard(valueLineChartConfig)}
+          {apiResponse.ownerAddress ? valueLineChartCard(valueLineChartConfig) 
+          : 
+          <Card style={{borderRadius: "30px", height: "196px", color: "black", backgroundColor: orangeShade}}>
+            <div>Looks like you are a new user! Check back after 24 hours for interesting insights!</div>
+          </Card>}
         </Col>
       </Row>
     </Layout>
@@ -481,7 +487,7 @@ export default function BalancesPage() {
           <strong style={{color: overallColor}}>{netWorth ? (netWorth + "$") : <LoadingOutlined />}</strong>
         </Col>
         <Col span={12} style={{textAlign: "center", fontSize:"26px"}}>
-          <strong style={{color: profitcssClass}}>{yesterdayPnl ? (yesterdayPnl + "$") : <LoadingOutlined />}</strong>
+          <strong style={{color: profitcssClass}}>{yesterdayPnl ? (yesterdayPnl + "$") : apiResponse.ownerAddress ? <LoadingOutlined /> : "-"}</strong>
         </Col>
       </Row>
     </Card>
@@ -510,7 +516,7 @@ export default function BalancesPage() {
         if (details[i].token_address === item.effectiveMint)
           logoUrl = details[i].token_logo
       }
-      return <Menu.Item key={key} style={{height:"50px"}}>
+      return <Menu.Item key={key} disabled={item.disabled} style={{height:"50px"}}>
         
         <Row>
           <Col span={12}>
@@ -546,7 +552,7 @@ export default function BalancesPage() {
       <Menu.Item key={"All3"}  icon = {<LaptopOutlined/>} disabled={true}>{"Yield Farming"}</Menu.Item>
       <Menu.Item key={"All4"} icon = {<FileImageOutlined />} disabled={true}>{"NFTs"}</Menu.Item>
       {siderProfileComponent()}
-      {apiResponse.ownerAddress && tokenAndPriceComponent()}
+      {tokenAndPriceComponent()}
     </Menu>
     
   </Sider>;
@@ -575,17 +581,36 @@ export default function BalancesPage() {
   const setAllTokensOwned = (solanaData, dbTokens) => {
     let finalArray = [];
     for (var i=0; i<solanaData.length; i++){
+      let found = false;
       for (var j=0; j<dbTokens.length; j++){
         if (solanaData[i].account.data.parsed.info.mint === dbTokens[j].effectiveMint){
+          found = true;
           let amount = parseFloat((solanaData[i].account.data.parsed.info.tokenAmount.uiAmount).toFixed(2));
           if (amount > 0)
           finalArray.push({
             effectiveMint: dbTokens[j].effectiveMint,
             tokenName: dbTokens[j].tokenName,
             marketAddress: dbTokens[j].marketAddress, 
-            amount: amount
+            amount: amount,
+            disabled: false
           });
           break;
+        }
+      }
+      if (!found)
+      {
+        for (var k=0; k<allTokens.tokens.length; k++){
+          if (solanaData[i].account.data.parsed.info.mint === allTokens.tokens[k].tokenMint){
+            let amount = parseFloat((solanaData[i].account.data.parsed.info.tokenAmount.uiAmount).toFixed(2));
+          if (amount > 0)
+          finalArray.push({
+            effectiveMint: allTokens.tokens[k].tokenMint,
+            tokenName: allTokens.tokens[k].tokenName,
+            marketAddress: allTokens.tokens[k].marketAddress, 
+            amount: amount,
+            disabled: true
+          });
+          }
         }
       }
     }
@@ -684,22 +709,7 @@ export default function BalancesPage() {
 
   const getMainContent = () =>{
     return (<div className="site-layout-content">
-      {apiResponse.ownerAddress ? chartCard(activeMenuKey) 
-      :
-      <Layout >
-      <Row align="middle" style = {{paddingBottom: "40px", paddingTop: "60px"}}>
-        <Col>
-          <div style={{fontSize: "19px"}}><strong>Assets Dashboard</strong></div>
-        </Col>
-      </Row>
-      <Row justify="center" align="middle">
-        <Col span={24} style={{height: "200px", paddingLeft: "20px", paddingTop: "30px", border:"#FFA910 1px solid"}}>
-          <div style={{fontSize: "20px", textAlign: "center"}}>Looks like you have connected your wallet for the first time!</div>
-          <div style={{fontSize: "18px", textAlign: "center"}}>Check back tomorrow for interesting insights in this space!</div>
-        </Col>
-      </Row>
-      </Layout>
-      }
+      {chartCard(activeMenuKey)}
       {getTransactionTableComponent()}
       </div>);
   };
@@ -769,6 +779,8 @@ export default function BalancesPage() {
       fetch(serverUrl + '/getUserData/' + wallet.publicKey.toBase58())
         .then((results) => results.json())
         .then((data) => {
+          let tokenDistributionBalances;
+          let userTokensArray = [];
           if (data.data !== "First time user"){
           setApiResponse(data);
           setTokenDistribution(data.data.tokenDistribution);
@@ -778,7 +790,17 @@ export default function BalancesPage() {
           {
             setYesterdayPnl(data.data.profitLossValue[data.data.profitLossValue.length-1].profit);
           }
-          let tokenDistributionBalances = data.data.tokenDistribution.balances;
+          tokenDistributionBalances = data.data.tokenDistribution.balances;
+          userTokensArray = tokenDistributionBalances.map(({tokenName, effectiveMint, marketAddress}) => {
+            return {
+              tokenName: tokenName,
+              effectiveMint: effectiveMint,
+              marketAddress: marketAddress
+            };
+          }).filter(item => {
+            return item.tokenName !== "";
+          });
+        }
           let jsonBody = {
             "jsonrpc": "2.0",
             "id": 1,
@@ -804,20 +826,11 @@ export default function BalancesPage() {
           fetch(solanaUrl, apiBody)
           .then((results) => results.json())
           .then((data2) => {
-            let userTokensArray = tokenDistributionBalances.map(({tokenName, effectiveMint, marketAddress}) => {
-              return {
-                tokenName: tokenName,
-                effectiveMint: effectiveMint,
-                marketAddress: marketAddress
-              };
-            }).filter(item => {
-              return item.tokenName !== "";
-            });
             userTokensArray = setAllTokensOwned(data2.result.value, userTokensArray);
             setUserTokens(userTokensArray);
             setYesterdayDetails(userTokensArray);
           })
-        }});
+        });
     if (_.isEmpty(allTransactions)){
        fetch(serverUrl + '/getTransactions/' + wallet.publicKey.toBase58())
        .then((results) => results.json())
