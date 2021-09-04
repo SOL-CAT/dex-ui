@@ -93,6 +93,7 @@ export const TVChartContainer = () => {
         );
       });
     });
+    // eslint-disable-next-line
   }, [market]);
 
   return <div style={{height: '100%', width: '100%', borderRadius:"15px"}} id={defaultProps.containerId} className="tradingview-chart" />;

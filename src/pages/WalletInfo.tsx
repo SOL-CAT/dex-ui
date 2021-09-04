@@ -103,10 +103,6 @@ export default function BalancesPage() {
   }]);
   const [tokenGraphDetails, setTokenGraphDetails] = useState([]);
   const [activeMenuKey, setActiveMenuKey] = useState("All");
-  const [tokenDistributionLatest, setTokenDistribution] = useState({
-    __time: null,
-    balances: []
-  });
   const [netWorth, setNetWorth] = useState("");
   const [pnl, setpnl] = useState([]);
   const [yesterdayPnl, setYesterdayPnl] = useState(0);
@@ -327,6 +323,7 @@ export default function BalancesPage() {
     let dataConfig = merge.recursive(true, columnConfig, {
       series: [
         {
+          pointWidth: 15,
           name: "daily Change",
           showInLegend: false,
           data: dataObject,
@@ -344,7 +341,6 @@ export default function BalancesPage() {
     // @ts-ignore: Object is possibly 'null'.
     let apiResponseDataTokenDistribution = apiResponse.data.tokenDistribution;
     let dataObject: any[] = [];
-    let updatedTime = apiResponseDataTokenDistribution.__time;
     let tempNetWorth = 0;
     for (var i = 0; i < apiResponseDataTokenDistribution.balances.length; i++) {
       let value = parseFloat((
@@ -378,7 +374,7 @@ export default function BalancesPage() {
           let name = (this as any).name;
           if (name)
             return "<div style='color:black; font-size: 12px'>" + name + "</div>"
-          return "<div style='color:black'>" + "Unknown" + "</div>"
+          return "<div style='color:black'>Unknown</div>"
       },
       y: 10,
       x: -20
@@ -557,10 +553,6 @@ export default function BalancesPage() {
     
   </Sider>;
   };
-
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
   async function getPrice(
     marketAddress,
@@ -783,7 +775,6 @@ export default function BalancesPage() {
           let userTokensArray = [];
           if (data.data !== "First time user"){
           setApiResponse(data);
-          setTokenDistribution(data.data.tokenDistribution);
           setTokenGraphDetails(data.data.tokenData);
           setpnl(data.data.profitLossValue);
           if (data.data.profitLossValue.length > 0)
@@ -846,6 +837,7 @@ export default function BalancesPage() {
           : convertTransactionDictionaryToTable(mintTransactions, activeMenuKey);
     }
   }
+  // eslint-disable-next-line
   }, [activeMenuKey, wallet, connected]);
   return antdDesign();
 }
