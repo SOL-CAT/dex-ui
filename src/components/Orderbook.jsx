@@ -38,6 +38,22 @@ const Line = styled.div`
     `}
 `;
 
+const Line2 = styled.div`
+  text-align: left;
+  float: left;
+  height: 100%;
+  ${(props) =>
+    props['data-width'] &&
+    css`
+      width: ${props['data-width']};
+    `}
+  ${(props) =>
+    props['data-bgcolor'] &&
+    css`
+      background-color: ${props['data-bgcolor']};
+    `}
+`;
+
 const Price = styled.div`
   position: absolute;
   right: 5px;
@@ -109,7 +125,7 @@ export default function Orderbook({
     }
     return cumulative;
   }
-
+  let lengthSell = orderbookData?.asks.length;
   return (
     <FloatingElement
       style={
@@ -124,43 +140,69 @@ export default function Orderbook({
       }
     >
       <Title>Orderbook</Title>
+      <MarkPriceComponent markPrice={markPrice} />
       <SizeTitle>
         <Col span={12} style={{ textAlign: 'left' }}>
           Size ({baseCurrency})
+          {lengthSell > 0 &&
+            orderbookData?.asks.map((item, index) => {
+              return (
+                <OrderbookRow
+                  key={orderbookData?.asks[lengthSell - 1 - index].price + ''}
+                  price={
+                    orderbookData?.asks[orderbookData?.asks.length - 1 - index]
+                      .price
+                  }
+                  size={
+                    orderbookData?.asks[orderbookData?.asks.length - 1 - index]
+                      .size
+                  }
+                  side={'sell'}
+                  sizePercent={
+                    orderbookData?.asks[orderbookData?.asks.length - 1 - index]
+                      .sizePercent
+                  }
+                  onPriceClick={() =>
+                    onPrice(
+                      orderbookData?.asks[
+                        orderbookData?.asks.length - 1 - index
+                      ].price,
+                    )
+                  }
+                  onSizeClick={() =>
+                    onSize(
+                      orderbookData?.asks[
+                        orderbookData?.asks.length - 1 - index
+                      ].size,
+                    )
+                  }
+                  inverted={false}
+                />
+              );
+            })}
         </Col>
         <Col span={12} style={{ textAlign: 'right' }}>
           Price ({quoteCurrency})
+          {orderbookData?.bids.map(({ price, size, sizePercent }) => (
+            <OrderbookRow
+              key={price + ''}
+              price={price}
+              size={size}
+              side={'buy'}
+              sizePercent={sizePercent}
+              onPriceClick={() => onPrice(price)}
+              onSizeClick={() => onSize(size)}
+              inverted={true}
+            />
+          ))}
         </Col>
       </SizeTitle>
-      {orderbookData?.asks.map(({ price, size, sizePercent }) => (
-        <OrderbookRow
-          key={price + ''}
-          price={price}
-          size={size}
-          side={'sell'}
-          sizePercent={sizePercent}
-          onPriceClick={() => onPrice(price)}
-          onSizeClick={() => onSize(size)}
-        />
-      ))}
-      <MarkPriceComponent markPrice={markPrice} />
-      {orderbookData?.bids.map(({ price, size, sizePercent }) => (
-        <OrderbookRow
-          key={price + ''}
-          price={price}
-          size={size}
-          side={'buy'}
-          sizePercent={sizePercent}
-          onPriceClick={() => onPrice(price)}
-          onSizeClick={() => onSize(size)}
-        />
-      ))}
     </FloatingElement>
   );
 }
 
 const OrderbookRow = React.memo(
-  ({ side, price, size, sizePercent, onSizeClick, onPriceClick }) => {
+  ({ side, price, size, sizePercent, onSizeClick, onPriceClick, inverted }) => {
     const element = useRef();
 
     const { market } = useMarket();
@@ -188,7 +230,7 @@ const OrderbookRow = React.memo(
         ? Number(price).toFixed(getDecimalCount(market.tickSize) + 1)
         : price;
 
-    return (
+    return !inverted ? (
       <Row ref={element} style={{ marginBottom: 1 }} onClick={onSizeClick}>
         <Col span={12} style={{ textAlign: 'left' }}>
           {formattedSize}
@@ -203,6 +245,23 @@ const OrderbookRow = React.memo(
             }
           />
           <Price onClick={onPriceClick}>{formattedPrice}</Price>
+        </Col>
+      </Row>
+    ) : (
+      <Row ref={element} style={{ marginBottom: 1 }} onClick={onSizeClick}>
+        <Col span={12} style={{ textAlign: 'left' }}>
+          <Line2
+            data-width={sizePercent + '%'}
+            data-bgcolor={
+              side === 'buy'
+                ? 'rgba(65, 199, 122, 0.6)'
+                : 'rgba(242, 60, 105, 0.6)'
+            }
+          />
+          <Price onClick={onPriceClick}>{formattedPrice}</Price>
+        </Col>
+        <Col span={12} style={{ textAlign: 'right' }}>
+          {formattedSize}
         </Col>
       </Row>
     );

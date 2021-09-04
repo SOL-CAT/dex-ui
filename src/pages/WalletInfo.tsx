@@ -386,8 +386,6 @@ export default function BalancesPage() {
     setActiveMenuKey(key);
   };
 
-  //below this code still ok
-
   const insertComma = (balance) => {
     return balance.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -514,7 +512,7 @@ export default function BalancesPage() {
       }
       return <Menu.Item key={key} disabled={item.disabled} style={{height:"50px"}}>
         
-        <Row>
+        <Row title={item.disabled ? "No insights available for token added in the last 24hrs. Check back tomorrow!" : "View Insights"}>
           <Col span={12}>
             <img alt="" height="20px" width="20px" src={logoUrl}/>
           </Col>
@@ -543,10 +541,10 @@ export default function BalancesPage() {
     <Menu style = {{textAlign: "center", height: "100%"}} theme="dark" mode="vertical" defaultSelectedKeys={[activeMenuKey]}
     onClick={(e) => 
       handleClick(e.key)}>
-      <Menu.Item key={"All"} icon = {<DashboardOutlined/>}>{"Dashboard"}</Menu.Item>
-      <Menu.Item key={"All2"} icon = {<SwapOutlined />} disabled={true}>{"Swap"}</Menu.Item>
-      <Menu.Item key={"All3"}  icon = {<LaptopOutlined/>} disabled={true}>{"Yield Farming"}</Menu.Item>
-      <Menu.Item key={"All4"} icon = {<FileImageOutlined />} disabled={true}>{"NFTs"}</Menu.Item>
+      <Menu.Item style={{textAlign: "left", fontSize: "16px"}} key={"All"} icon = {<DashboardOutlined/>}>{"Dashboard"}</Menu.Item>
+      <Menu.Item style={{textAlign: "left", fontSize: "16px"}} key={"All2"} icon = {<SwapOutlined />} disabled={true}>{"Swap"}</Menu.Item>
+      <Menu.Item style={{textAlign: "left", fontSize: "16px"}} key={"All3"}  icon = {<LaptopOutlined/>} disabled={true}>{"Yield Farming"}</Menu.Item>
+      <Menu.Item style={{textAlign: "left", fontSize: "16px"}} key={"All4"} icon = {<FileImageOutlined />} disabled={true}>{"NFTs"}</Menu.Item>
       {siderProfileComponent()}
       {tokenAndPriceComponent()}
     </Menu>
@@ -645,6 +643,7 @@ export default function BalancesPage() {
     let dataConfig = merge.recursive(true, columnConfig, {
       series: [
         {
+          pointWidth: 15,
           name: "daily Change",
           showInLegend: false,
           data: dataObject,
