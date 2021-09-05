@@ -41,7 +41,7 @@ export function Routes() {
             <Route exact path="/pools/:poolAddress">
               <PoolPage />
             </Route>
-            <Route exact path="/wallets">
+            <Route exact path="/catofolio">
               <WalletInfo />
             </Route>
           </Switch>

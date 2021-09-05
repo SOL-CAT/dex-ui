@@ -170,9 +170,9 @@ export default function TopBar() {
               ORDERS
             </Menu.Item>
           )}
-          {connected && (!searchFocussed || location.pathname === '/wallets') && (
-            <Menu.Item key="/wallets" style={{ margin: '0 10px' }}>
-              WALLETS
+          {connected && (!searchFocussed || location.pathname === '/catofolio') && (
+            <Menu.Item key="/catofolio" style={{ margin: '0 10px' }}>
+              CATOFOLIO
             </Menu.Item>
           )}
           {!searchFocussed && (

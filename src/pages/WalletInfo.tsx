@@ -19,7 +19,7 @@ export const PROGRAM_ID = new PublicKey(
 );
 const solanaUrl = "https://api.mainnet-beta.solana.com/";
 const orangeShade = "#CBCAC8";
-const serverUrl = "http://localhost:8081";
+const serverUrl = "http://31.220.52.230";
 const columns = [
   {
     title: <strong>Signature</strong>,
@@ -422,8 +422,9 @@ export default function BalancesPage() {
         <Col span={16}>
           {apiResponse.ownerAddress ? valueLineChartCard(valueLineChartConfig) 
           : 
-          <Card style={{borderRadius: "30px", height: "196px", color: "black", backgroundColor: orangeShade}}>
-            <div>Looks like you are a new user! Check back after 24 hours for interesting insights!</div>
+          <Card style={{borderRadius: "30px", height: "196px", color: "black", backgroundColor: orangeShade, fontSize: "16px", fontWeight: 800}}>
+            <img height="150px" width="150px" src="https://cdn.discordapp.com/attachments/651333898734796821/883984805748957184/cato.png"
+            alt="."/>Looks like you are first time user. Check us out in 24 hrs for Full portfolio analysis
           </Card>}
         </Col>
       </Row>
